@@ -24,7 +24,6 @@ function Home() {
         setDes('');
         setTemplateName('');
         setFile(null);
-
     }
   return (
     <div className='w-full h-full'>

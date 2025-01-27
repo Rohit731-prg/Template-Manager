@@ -9,7 +9,8 @@ function ContextProvider({children}) {
     }
     const [saveTemplateList, setSaveTemplateList] = useState([]);
   return (
-    <contextAPI.Provider value={{mode, setMode, UserData, saveTemplateList, setSaveTemplateList}}>
+    <contextAPI.Provider 
+    value={{mode, setMode, UserData, saveTemplateList, setSaveTemplateList}}>
       {children}
     </contextAPI.Provider>
   )
