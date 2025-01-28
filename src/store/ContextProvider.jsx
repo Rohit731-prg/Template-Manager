@@ -8,9 +8,10 @@ function ContextProvider({children}) {
       password : '1950'
     }
     const [saveTemplateList, setSaveTemplateList] = useState([]);
+    const [favList, setFavList] = useState([]);
   return (
     <contextAPI.Provider 
-    value={{mode, setMode, UserData, saveTemplateList, setSaveTemplateList}}>
+    value={{mode, setMode, UserData, saveTemplateList, setSaveTemplateList, favList, setFavList}}>
       {children}
     </contextAPI.Provider>
   )
