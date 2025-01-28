@@ -43,14 +43,24 @@ function Home() {
                 <div className='flex flex-row sm:gap-10 gap-2 '>
                     <NavLink to={'/home'}>Home</NavLink>
                     <NavLink to={'/save-template'}>Templates</NavLink>
+                    <NavLink to={'/fav-template-list'}>Favorites</NavLink>
                 </div>
-                <button
-                style={{ ...(hoverEffect && style.hover) }}
-                onMouseEnter={() => setHoverEffect(true)}
-                onMouseLeave={() => setHoverEffect(false)}
-                className='sm:px-5 sm:py-3 bg-black text-white rounded-lg font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm'
-                onClick={() => navigate('/')}
-                >Log Out</button>
+                <div className='flex flex-row gap-5'>
+                    <button
+                    style={{ ...(hoverEffect && style.hover) }}
+                    onMouseEnter={() => setHoverEffect(true)}
+                    onMouseLeave={() => setHoverEffect(false)}
+                    className='sm:px-5 sm:py-3 bg-black text-white rounded-lg font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm'
+                    onClick={() => navigate('/')}
+                    >Setting</button>
+                    <button
+                    style={{ ...(hoverEffect && style.hover) }}
+                    onMouseEnter={() => setHoverEffect(true)}
+                    onMouseLeave={() => setHoverEffect(false)}
+                    className='sm:px-5 sm:py-3 bg-black text-white rounded-lg font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm'
+                    onClick={() => navigate('/')}
+                    >Log Out</button>
+                </div>
             </div>
             <p className='mt-10 text-2xl sm:text-3xl sm:font-semibold'>Welcome {UserData.userName}</p>
             <div className='mt-10 px-5 flex flex-col items-center justify-center'>

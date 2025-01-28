@@ -5,7 +5,7 @@ import { contextAPI } from "../store/contextAPI";
 
 function SaveTemplate() {
   
-  const { saveTemplateList, setSaveTemplateList, favList, setFavList } = useContext(contextAPI);
+  const { saveTemplateList, setSaveTemplateList, setFavList, setMainTemplate } = useContext(contextAPI);
   const navigate = useNavigate();
   const [hoverEffect, setHoverEffect] = useState(false);
 
@@ -40,6 +40,10 @@ function SaveTemplate() {
     }
   }
 
+  const detalsPage = (item) => {
+    setMainTemplate(item);
+    navigate('/maintemplate')
+  }
   return (
     <div className="w-full h-full">
       <div
@@ -52,6 +56,7 @@ function SaveTemplate() {
           <div className="flex flex-row sm:gap-10 gap-2">
             <NavLink to={"/home"}>Home</NavLink>
             <NavLink to={"/save-template"}>Templates</NavLink>
+            <NavLink to={"/fav-template-list"}>Favourites</NavLink>
           </div>
           <button
             style={{ ...(hoverEffect && style.hover) }}
@@ -63,17 +68,26 @@ function SaveTemplate() {
             Log Out
           </button>
         </div>
-
-        {/* Last Updated Templates Section */}
+        <div className="w-full h-auto py-5 flex justify-center">
+          <div className="bg-white w-1/3 flex flex-row justify-between rounded-2xl">
+            <input 
+            placeholder="Search Templates"
+            className="w-3/4 h-10 border-none outline-none px-3 text-black"
+            type="text" />
+            <button
+            className="w-1/4 bg-cyan-300 rounded-2xl cursor-pointer"
+            >🔍</button>
+          </div>
+        </div>
         <div>
           <p className="mt-10 text-2xl">Last Updated Templates</p>
           <div className="flex flex-row gap-5 mt-5 flex-wrap">
             {saveTemplateList.map((item) => (
-              <div key={item.id} className="w-[500px] h-[300px] relative">
+              <div key={item.id} className="w-[400px] h-[300px] relative">
                 <img
                   src={URL.createObjectURL(item.file)}
                   alt=""
-                  className="w-full h-full object-cover rounded-b-xl"
+                  className="w-full h-full object-cover rounded-xl"
                 />
                 <button
                   style={{ boxShadow: "0 0 4px black" }}
@@ -82,43 +96,25 @@ function SaveTemplate() {
                 >
                   {item.fav ? "❤️" : "🤍"}
                 </button>
-                <div className="absolute bottom-0 left-0 px-5 py-4 w-full bg-black/40 backdrop-blur-md rounded-t-lg">
+                <div className="absolute bottom-0 left-0 px-5 py-4 w-full bg-black/40 backdrop-blur-md rounded-t-lg rounded-xl">
                   <p className="text-white text-lg font-semibold">
                     {item.name}
                   </p>
                   <p className="text-white text-sm mt-1">{item.description}</p>
-                  <button
-                    className="px-5 py-1 bg-red-500/80 hover:bg-red-600 text-white rounded-md text-base font-semibold cursor-pointer mt-3"
-                    onClick={() => deleteTemplate(item.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Favorite Templates Section */}
-          <p className="mt-10 text-2xl">Favorite Templates</p>
-          <div className="flex flex-row gap-5 mt-5 flex-wrap">
-            {favList.map((item) => (
-              <div key={item.id} className="w-[500px] h-[300px] relative">
-                <img
-                  src={URL.createObjectURL(item.file)}
-                  alt=""
-                  className="w-full h-full object-cover rounded-b-xl"
-                />
-                <div className="absolute bottom-0 left-0 px-5 py-4 w-full bg-black/40 backdrop-blur-md rounded-t-lg">
-                  <p className="text-white text-lg font-semibold">
-                    {item.name}
-                  </p>
-                  <p className="text-white text-sm mt-1">{item.description}</p>
-                  <button
-                    className="px-5 py-1 bg-red-500/80 hover:bg-red-600 text-white rounded-md text-base font-semibold cursor-pointer mt-3"
-                    onClick={() => deleteTemplate(item.id)}
-                  >
-                    Delete
-                  </button>
+                  <div className="w-full flex flex-row gap-5">
+                    <button
+                    className="px-5 py-1 bg-green-500/80 hover:bg-green-600 text-white rounded-md text-base font-semibold cursor-pointer mt-3"
+                    onClick={() => detalsPage(item)}
+                    >
+                      details
+                    </button>
+                    <button
+                      className="px-5 py-1 bg-red-500/80 hover:bg-red-600 text-white rounded-md text-base font-semibold cursor-pointer mt-3"
+                      onClick={() => deleteTemplate(item.id)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
