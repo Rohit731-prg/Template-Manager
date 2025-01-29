@@ -24,6 +24,7 @@ function Home() {
         setDes('');
         setTemplateName('');
         setFile(null);
+        alert('Template Uploaded Successfully');
     }
 
   return (
