@@ -10,7 +10,6 @@ function Home() {
     const [des, setDes] = useState('');
     const [id, setId] = useState(0);
     const [file, setFile] = useState(null);
-    const [hoverEffect, setHoverEffect] = useState(false);
 
     const uploadTemplate = () => {
         const newTemplate = {
@@ -27,12 +26,6 @@ function Home() {
         setFile(null);
     }
 
-    const style = {
-        hover: {
-          boxShadow: '0 0 10px #27c5f5',
-          transition: '0.3s'
-        }
-      }
   return (
     <div className='w-full h-full'>
         <div 
@@ -47,17 +40,11 @@ function Home() {
                 </div>
                 <div className='flex flex-row gap-5'>
                     <button
-                    style={{ ...(hoverEffect && style.hover) }}
-                    onMouseEnter={() => setHoverEffect(true)}
-                    onMouseLeave={() => setHoverEffect(false)}
-                    className='sm:px-5 sm:py-3 bg-black text-white rounded-lg font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm'
-                    onClick={() => navigate('/')}
+                    className='sm:px-5 sm:py-3 bg-black text-white rounded-lg hover:buttonShadow font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm'
+                    onClick={() => navigate('/setting')}
                     >Setting</button>
                     <button
-                    style={{ ...(hoverEffect && style.hover) }}
-                    onMouseEnter={() => setHoverEffect(true)}
-                    onMouseLeave={() => setHoverEffect(false)}
-                    className='sm:px-5 sm:py-3 bg-black text-white rounded-lg font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm'
+                    className='sm:px-5 sm:py-3 bg-black text-white rounded-lg hover:buttonShadow font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm'
                     onClick={() => navigate('/')}
                     >Log Out</button>
                 </div>
@@ -89,7 +76,7 @@ function Home() {
                 </div>
                 <button
                 onClick={uploadTemplate}
-                className='mt-10 w-auto px-10 text-white rounded-lg bg-black cursor-pointer py-3 hover:shadow-2xl hover:shadow-cyan-200'>
+                className='mt-10 w-auto px-10 text-white rounded-lg bg-black cursor-pointer py-3 hover:buttonShadow'>
                     Upload
                 </button>
             </div>

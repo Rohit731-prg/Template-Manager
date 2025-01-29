@@ -5,13 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function FavTemplateList() {
   const { favList, setFavList } = useContext(contextAPI);
-  const [hoverEffect, setHoverEffect] = useState(false);
-  const style = {
-    hover: {
-      boxShadow: "0 0 10px #27c5f5",
-      transition: "0.3s",
-    },
-  };
+
   return (
     <div
       style={{ backgroundImage: `url(${bg})` }}
@@ -25,9 +19,6 @@ function FavTemplateList() {
           <NavLink to={"/fav-template-list"}>Favourites</NavLink>
         </div>
         <button
-          style={{ ...(hoverEffect && style.hover) }}
-          onMouseEnter={() => setHoverEffect(true)}
-          onMouseLeave={() => setHoverEffect(false)}
           className="sm:px-5 sm:py-3 bg-black text-white rounded-lg font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm"
           onClick={() => navigate("/")}
         >

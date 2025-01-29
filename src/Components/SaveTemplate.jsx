@@ -7,7 +7,6 @@ function SaveTemplate() {
   
   const { saveTemplateList, setSaveTemplateList, setFavList, setMainTemplate } = useContext(contextAPI);
   const navigate = useNavigate();
-  const [hoverEffect, setHoverEffect] = useState(false);
 
   // Function to delete a template
   const deleteTemplate = (id) => {
@@ -33,13 +32,6 @@ function SaveTemplate() {
     setFavList(updatedFavList);
   }, [saveTemplateList]);
 
-  const style = {
-    hover: {
-      boxShadow: '0 0 10px #27c5f5',
-      transition: '0.3s'
-    }
-  }
-
   const detalsPage = (item) => {
     setMainTemplate(item);
     navigate('/maintemplate')
@@ -59,10 +51,7 @@ function SaveTemplate() {
             <NavLink to={"/fav-template-list"}>Favourites</NavLink>
           </div>
           <button
-            style={{ ...(hoverEffect && style.hover) }}
-            onMouseEnter={() => setHoverEffect(true)}
-            onMouseLeave={() => setHoverEffect(false)}
-            className="sm:px-5 sm:py-3 bg-black text-white rounded-lg font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm"
+            className="sm:px-5 sm:py-3 bg-black hover:buttonShadow text-white rounded-lg font-semibold px-3 py-2 cursor-pointer sm:text-lg text-sm"
             onClick={() => navigate("/")}
           >
             Log Out
